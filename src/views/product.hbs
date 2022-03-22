@@ -1,0 +1,24 @@
+<section class="product">
+  <div>
+    <img src="{{product.image_front_url}}" />
+    <h2>{{product.product_name}} </h2>
+  </div>
+  <h3>{{product._id}}</h3>
+  <ul>
+    <li>Fat:<p>
+        {{nutrients.fat}}
+        {{nutrients.fat_unit}}</p></li>
+    <li>Sugars:
+      <p>{{nutrients.sugars}}
+        {{nutrients.sugars_unit}}</p></li>
+    <li>Carbohydrates:
+      <p>{{nutrients.carbohydrates}}
+        {{nutrients.carbohydrates_unit}}</p></li>
+  </ul>
+  <h3>Nutrients per {{product.nutrition_data_per}}</h3>
+  <form action="/scanner" method="get">
+    <button>
+      <i class="fa fa-video"></i>
+    </button>
+  </form>
+</section>
