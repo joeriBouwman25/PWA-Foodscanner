@@ -1,9 +1,12 @@
 # Progressive Web Apps - Foodscanner
 
-<img src="https://github.com/joeriBouwman25/CMD-Project-Tech-2021/blob/main/public/images/wiki/mmm%20logo.png" 
-height=130><img src="https://github.com/joeriBouwman25/CMD-Project-Tech-2021/blob/main/public/images/wiki/banner.png" height=130>
+<img src="https://github.com/joeriBouwman25/Foodscanner/blob/main/assets/banner.png" height=130>
 
 Foodscanner, is an Progressive Web App where people can find information about nutritions in products. Foodscanner uses Open Food Facts API and Barcode Detect API to create a functional scanner to gain product information.
+
+<img src="https://github.com/joeriBouwman25/Foodscanner/blob/main/assets/banner.png" height=130>
+<img src="https://github.com/joeriBouwman25/Foodscanner/blob/main/assets/banner.png" height=130>
+<img src="https://github.com/joeriBouwman25/Foodscanner/blob/main/assets/banner.png" height=130>
 
 ## Requirements
 
