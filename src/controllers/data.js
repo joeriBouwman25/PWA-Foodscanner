@@ -13,6 +13,7 @@ const getDataFromAPI = async (req, res) => {
       nutrients: response.product.nutriments
     })
   } else {
+    //   throw error
     res.render('error', {
       barcode: response.code
     })

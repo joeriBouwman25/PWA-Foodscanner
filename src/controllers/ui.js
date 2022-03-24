@@ -7,7 +7,12 @@ const getScanner = (req, res) => {
   res.render('scanner')
 }
 
+const showLoader = (req, res) => {
+  res.render('loader')
+}
+
 module.exports = {
   getIndex,
-  getScanner
+  getScanner,
+  showLoader
 }

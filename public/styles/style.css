@@ -1,6 +1,17 @@
+html {
+  height: 100vh;
+  display: grid;
+  place-items: center;
+  overflow: hidden;
+}
+
 body {
   margin: 0;
   font-family: Arial, Helvetica, sans-serif;
+  width: 25rem;
+  border-radius: 1em;
+  position: relative;
+  box-shadow: 0px 5px 15px 3px rgba(0, 0, 0, 0.1);
 }
 
 /* /////////////// */
@@ -11,14 +22,16 @@ header {
   display: flex;
   align-items: center;
   height: 6em;
+  border-radius: 1em 1em 0 0;
   background-color: rgb(247, 164, 39);
 }
 
 header h1 {
-  margin: 0;
+  padding: 1em;
+  margin: 0 auto;
   color: #fff;
   font-family: "rig solid";
-  font-size: 3em;
+  font-size: 2.5em;
   letter-spacing: 0.01em;
 }
 
@@ -30,8 +43,7 @@ main {
   background-image: url("../images/fruit_background.png");
   background-position: center;
   background-size: 50%;
-  height: 85vh;
-  display: flex;
+  height: 34rem;
 }
 
 a {
@@ -39,6 +51,8 @@ a {
 }
 
 button {
+  display: block;
+  margin: 3em auto 0 auto;
   height: 5em;
   width: 9em;
   border: none;
@@ -46,21 +60,18 @@ button {
   color: #fff;
   background-color: rgb(247, 164, 39);
   border-radius: 0.8em;
-  box-shadow: 1px 2px 3px black;
+  box-shadow: 0 3px 6px rgba(0, 0, 0, 0.3);
   cursor: pointer;
 }
 
 i {
   font-size: 3em;
-  text-shadow: 2px 2px 2px #765017;
+  text-shadow: 0px 3px 6px #7650177e;
 }
 
 section {
-  display: flex;
-  flex-direction: column;
-  align-items: center;
-  position: absolute;
-  width: 100%;
+  min-height: 100%;
+  overflow: hidden;
 }
 
 /* /////////////// */
@@ -73,10 +84,9 @@ section {
   font-family: "rig solid";
   max-width: 16em;
   border-radius: 0.8em;
-  background-color: #c7deff45;
   padding: 0.5em;
   text-align: center;
-  margin: 0.5em;
+  margin: 0.5em 0 0.5em 0.5em;
 }
 
 .home article {
@@ -88,6 +98,10 @@ section {
 /* ///SECTION 2/// */
 /* ////SCANNER//// */
 /* /////////////// */
+
+main .scanner {
+  position: relative;
+}
 
 main .scanner img:first-of-type {
   position: absolute;
@@ -117,7 +131,6 @@ main .scanner span {
 
 main .scanner video {
   max-width: 30em;
-  margin-bottom: 3em;
 }
 
 /* /////////////// */
@@ -150,9 +163,9 @@ main .product h3:last-of-type {
 
 main .product div > img:first-of-type {
   position: unset;
-  max-width: 35em;
+  /* max-width: 30em; */
   width: 100%;
-  height: 100%;
+  height: 10em;
   object-fit: cover;
   padding: 0;
   filter: drop-shadow(0 0 0 transparent);
@@ -193,33 +206,31 @@ main .product button {
 /* ////LOADING//// */
 /* /////////////// */
 
-section:nth-of-type(4) {
-  position: absolute;
-  left: 50%;
-  top: 29%;
-  transform: translate(-50%, -50%);
+.loader {
+  display: block;
+  margin: 0 auto;
   text-align: center;
   z-index: 3;
   width: 40%;
 }
 
-section:nth-of-type(4) p {
+.loader p {
   position: relative;
   animation: 3.4s BarcodeRevealing infinite;
   font-family: "Libre Barcode 128", cursive;
   font-size: 6.25em;
 }
 
-section:nth-of-type(4) span {
-  position: absolute;
-  left: -2.18em;
-  top: 33%;
-  height: 4em;
-  width: 12em;
+.loader span {
   background: #f7a427;
-  border-radius: 0.6em;
+  top: 30%;
+  height: 4.3em;
+  width: 10em;
+  border-radius: 0.5em;
   animation: 1.7s BarcodeOverlay forwards infinite;
   animation-timing-function: ease-out;
+  display: block;
+  position: absolute;
 }
 
 input:hover + label {
@@ -233,15 +244,23 @@ input:hover + label {
 /* /////////////// */
 
 main .error h2 {
-  color: #ff6b86;
   background-color: transparent;
   font-family: Arial, Helvetica, sans-serif;
-  font-size: 0.8em;
+  font-size: 1em;
+  margin: 1em auto;
+  text-align: center;
+  width: 17em;
+  width: 1;
+}
+
+main .error h2 span {
+  color: #ff6b86;
 }
 
 main .error h3 {
   max-width: 18em;
   text-align: center;
+  margin: 1em auto;
 
   color: #5c668b;
 }
@@ -286,10 +305,11 @@ footer {
   display: flex;
   justify-content: center;
   align-items: center;
-  position: fixed;
+  position: absolute;
   bottom: 0;
   width: 100%;
   height: 3em;
+  border-radius: 0 0 1em 1em;
   background-color: rgb(247, 164, 39);
 }
 
@@ -340,5 +360,13 @@ footer a {
   }
   100% {
     opacity: 0;
+  }
+}
+
+@media only screen and (max-width: 30rem) {
+  body {
+    height: 100%;
+    width: 100%;
+    border-radius: 0;
   }
 }

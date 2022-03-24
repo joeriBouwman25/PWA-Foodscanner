@@ -3,6 +3,7 @@ const video = document.querySelector('video')
 
 //  Turn camera On
 async function startCameraStream () {
+//   showLoader()
   const stream = await navigator.mediaDevices.getUserMedia({
     video: {
       facingMode: {
