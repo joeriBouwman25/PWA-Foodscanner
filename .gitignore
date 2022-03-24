@@ -1,3 +1,6 @@
+.DS_Store
+
+
 # Logs
 logs
 *.log
@@ -105,6 +108,3 @@ dist
 
 # dotenv file
 .env
-
-# DS_Store
-.DS_Store
