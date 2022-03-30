@@ -5,8 +5,9 @@ const handlebars = require('express-handlebars')
 const path = require('path')
 const routes = require('./src/routes/router')
 
+
 const app = express()
-const port = 4000
+const port = 3000
 
 app
   .set('view engine', 'hbs')
@@ -14,7 +15,7 @@ app
   .engine('hbs', handlebars({ extname: 'hbs' }))
 
   .use(express.json())
-  .use(express.urlencoded({ extended: false }))
+  .use(express.urlencoded({ extended: true }))
   .use(express.static('public'))
   .use(routes)
 

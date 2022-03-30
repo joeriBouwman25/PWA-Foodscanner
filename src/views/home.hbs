@@ -1,9 +1,15 @@
 <section class="home">
-  <h2>Activeer je camera om te starten met scannen</h2>
-  <form action="/scanner" method="get">
-    <button>
-      <i class="fa fa-video"></i>
-    </button>
+  <div class="none">
+    <h2>Activeer je camera om te starten met scannen</h2>
+    <form action="/scanner" method="get">
+      <button aria-label="start camera">
+        <i class="fa fa-video"></i>
+      </button>
+    </form>
+  </div>
+  <form class="barcodeInput" action="/scanner" method="post">
+    <input placeholder="Barcode" type="number" name="barcode" />
+    <button>Zoek</button>
   </form>
 
 </section>

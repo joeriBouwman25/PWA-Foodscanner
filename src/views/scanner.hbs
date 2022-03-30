@@ -1,10 +1,20 @@
 <section class="scanner">
-  <img src="images/border.png" alt="" />
-  <span> <!-- span voor laser straal stylen --></span>
-  <video></video>
-  <form action="/" method="get">
-    <button>
-      <i class="fa fa-video-slash"></i>
-    </button>
+  <div class="none">
+    <img src="images/border.png" alt="" />
+    <span> <!-- span voor laser straal stylen --></span>
+    <video></video>
+    <form action="/" method="get">
+      <button>
+        <i class="fa fa-video-slash"></i>
+      </button>
+    </form>
+  </div>
+  <form class="barcodeInput" action="/scanner" method="post">
+    <input placeholder="Barcode" type="number" name="barcode" />
+    <button>Zoek</button>
   </form>
+</section>
+<section class="loader">
+  <p>Hello</p>
+  <span></span>
 </section>
