@@ -9,6 +9,7 @@ router
   .get('/scanner', ui.getScanner)
   .post('/scanner', data.inputBarcode)
   .get('/scanner/:id', ui.renderProduct)
+  .get('/offline', ui.getOffline)
 
 
 module.exports = router

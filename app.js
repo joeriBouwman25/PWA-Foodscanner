@@ -11,7 +11,7 @@ const port = 3000
 
 app
   .set('view engine', 'hbs')
-  .set('views', 'src/views')
+  .set('views', 'views')
   .engine('hbs', handlebars({ extname: 'hbs' }))
 
   .use(express.json())

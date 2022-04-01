@@ -8,6 +8,10 @@ const getScanner = (req, res) => {
   res.render('scanner')
 }
 
+const getOffline = (req, res) => {
+  res.render('offline')
+}
+
 const renderProduct = async (req, res)  => {
   const response = await getDataFromAPI(req, res)
   
@@ -26,5 +30,6 @@ const renderProduct = async (req, res)  => {
 module.exports = {
   getIndex,
   getScanner,
+  getOffline,
   renderProduct
 }
