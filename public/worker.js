@@ -1,50 +1,49 @@
-const cacheStorage = 'core-cache'
-const cacheFiles = [
+
+// function to install service worker 
+const cacheResources = async () => {
+  const cacheStorage = 'core-cache'
+  const cacheFiles = [
     '/',
     '/offline',
     '/styles/style.css',
     '/scripts/client.js',
+    '/images/stay-connected.jpeg'
 ]
-
+  const cache = await caches.open(cacheStorage)
+  await self.skipWaiting()
+  return cache.addAll(cacheFiles)
+}
 
 self.addEventListener('install', event => {
-  console.log("installing")
-    event.waitUntil(
-        caches.open(cacheStorage)
-        .then(cache => cache.addAll(cacheFiles))
-        .then(() => self.skipWaiting())
-        )
-} )
+  console.log('Installing')
+  event.waitUntil(cacheResources())
+})
 
+// Activate Service Worker
+self.addEventListener('activate', event => {
+  console.log('activated')
+  event.waitUntil(clients.claim())
+})
 
-self.addEventListener('fetch', async event => {
-  const cache = await caches.open(cacheStorage);
-  const cachedResponse = await cache.match('/offline');
-    return cachedResponse
-  })
-
-//   async function networkFirst(req) {
-//     const cache = await caches.open('html-core')
-//     try { 
-//       const fresh = await fetch(req)
-//       cache.put(req, fresh.clone())
-//       return fresh;
-//     } catch (e) { 
-//       const cachedResponse = await cache.match(req)
-//       if(cachedResponse === undefined) {
-//         const error = await caches.open(cacheStorage)
-//         return error
-//       } else {
-//         return cachedResponse;
-//       }
-//     }
-//   }
-
-
+// function to render cached files
+const render = async (event) => {
+  const req = event.request
+  const cachedFiles = await caches.match(req)
   
-// async function cacheFirst(request) {
-//     const cache = await caches.open('html-core');
-//     const cachedResponse = await cache.match(request);
-//       return cachedResponse || networkFirst(request);
+  try {
+        const cache = await caches.open('html-core')
+        const updatedPages = await fetch(req)
+        cache.put(req, updatedPages.clone())
+        return updatedPages ||cachedFiles
+  } 
+  catch(err) {
+    const staticCache = await caches.open('core-cache')
+    return cachedFiles || staticCache.match('/offline')
+  }
+}
 
-// }
+self.addEventListener('fetch', event => {
+  event.respondWith(render(event))
+  }
+)
+

@@ -1,8 +1,8 @@
 const fetch = require('node-fetch')
 
-const inputBarcode = (req, res) => {
-  const input = req.body.barcode
-  res.redirect('scanner/' + input)
+const inputBarcode = async (req, res) => {
+  const input = await req.body.barcode
+  res.redirect('scanner/' + await input)
 }
 
 // Fetching Data
