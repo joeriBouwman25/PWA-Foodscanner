@@ -19,9 +19,15 @@ self.addEventListener('install', event => {
   event.waitUntil(cacheResources())
 })
 
-// Activate Service Worker
-self.addEventListener('activate', event => {
-  console.log('activated')
+// Activate Service Worker and delete old cache files
+const deleteOldCache = async () => {
+ const keys = await caches.keys()
+    return keys.all(keys.filter((key) => key !== staticCache && key !== dynamicCache).map((key) => caches.delete(key)))
+}
+
+
+self.addEventListener('activate', (event) => {
+  event.waitUntil(deleteOldCache())
   event.waitUntil(clients.claim())
 })
 
@@ -31,6 +37,7 @@ const render = async (event) => {
   const cachedFiles = await caches.match(req)
   
   try {
+    // fetch files and put in cache
         const cache = await caches.open('html-core')
         const updatedPages = await fetch(req)
         cache.put(req, updatedPages.clone())
