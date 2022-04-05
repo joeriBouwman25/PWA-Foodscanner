@@ -4,8 +4,8 @@
   "description": "",
   "main": "app.js",
   "scripts": {
-    "test": "test test",
-    "start": "nodemon app.js",
+    "test": "nodemon app.js",
+    "start": "node app.js",
     "lint": "eslint .",
     "lint:fix": "eslint . --fix"
   },

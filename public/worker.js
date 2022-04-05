@@ -1,13 +1,12 @@
-
+const cacheStorage = 'core-cache'
+const dynamicCache = 'html-core'
 // function to install service worker 
 const cacheResources = async () => {
-  const cacheStorage = 'core-cache'
   const cacheFiles = [
     '/',
     '/offline',
-    '/styles/style.css',
-    '/scripts/client.js',
-    '/images/stay-connected.jpeg'
+    '/styles/style.min.css',
+    '/scripts/client.min.js'
 ]
   const cache = await caches.open(cacheStorage)
   await self.skipWaiting()
@@ -22,7 +21,7 @@ self.addEventListener('install', event => {
 // Activate Service Worker and delete old cache files
 const deleteOldCache = async () => {
  const keys = await caches.keys()
-    return keys.all(keys.filter((key) => key !== staticCache && key !== dynamicCache).map((key) => caches.delete(key)))
+    return keys.all(keys.filter((key) => key !== cacheStorage && key !== dynamicCache).map((key) => caches.delete(key)))
 }
 
 
@@ -38,13 +37,13 @@ const render = async (event) => {
   
   try {
     // fetch files and put in cache
-        const cache = await caches.open('html-core')
+        const cache = await caches.open(dynamicCache)
         const updatedPages = await fetch(req)
         cache.put(req, updatedPages.clone())
         return updatedPages ||cachedFiles
   } 
   catch(err) {
-    const staticCache = await caches.open('core-cache')
+    const staticCache = await caches.open(CacheStorage)
     return cachedFiles || staticCache.match('/offline')
   }
 }

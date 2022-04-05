@@ -1,15 +1,15 @@
 const express = require('express')
 const handlebars = require('express-handlebars')
 const compression = require('compression')
-const uglifyJS = require('uglify-js')
 
-// eslint-disable-next-line no-unused-vars
+require('dotenv').config()
+
 const path = require('path')
 const routes = require('./src/routes/router')
 
 
 const app = express()
-const port = 3000
+const port =  process.env.PORT || 3000
 
 const setCache = (req, res, next) => {
   const period = 365 * 24 * 60 * 60 
@@ -38,7 +38,5 @@ app
   console.log(`Server running on port ${port}🎉`)
 })
 
-const result = uglifyJS.minify(['client.js'])
-console.log(result.code)
 
 
