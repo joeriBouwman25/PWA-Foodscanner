@@ -12,6 +12,11 @@ Foodscanner is a node.js app that works with express and Handlebars. The applica
 [https://developer.mozilla.org/en-US/docs/Web/API/Barcode_Detection_API](https://developer.mozilla.org/en-US/docs/Web/API/Barcode_Detection_API)
 The application also make use of the open food facts API, more information about this API can be found on [https://wiki.openfoodfacts.org/API](https://wiki.openfoodfacts.org/API)
 
+## Activity Diagram
+
+<img src="https://github.com/joeriBouwman25/progressive-web-apps-2122/blob/main/assets/images/activity%20diagram.png">
+
+
 ### Packages
 
 This project uses a number of NPM Packages in able to make te project work. The following packages are used:
