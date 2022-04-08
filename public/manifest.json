@@ -1,8 +1,8 @@
 {
   "name": "🍒Foodscanner",
   "short_name": "Foodscanner",
-  "theme_color": "#2196f3",
-  "background_color": "#2196f3",
+  "theme_color": "rgb(247, 164, 39)",
+  "background_color": "#fff",
   "display": "standalone",
   "start_url": "/",
   "description": "A PWA to detect Barcodes and gain product info",
