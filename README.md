@@ -47,19 +47,42 @@ As mentioned before this project makes use of an service worker. The service wor
 
 The first time the application is used the service worker will be installed and activated with the following static data already in `core-cache`:
 
-`  const cacheFiles = [
+```js  
+const cacheFiles = [
     '/',
     '/offline',
     '/styles/style.min.css',
     '/scripts/client.min.js'
 ]
-` 
+``` 
 
 When the service worker is installed it will fetch the requests send on the page and put this in the `html-cache`, the service worker will do this everytime so the latest version of the page is saved. Then it will check if the worker can render the page from `html-cache` or need to render it from fetch. When the user has no internet connection he or she will still be able to render visited pages because these pages are saved in `html-cache`.
 
 If the user has no internet and lands on a page he or she has never visited before, the service worker will render a static offline page from `core-cache` that we saved on the service worker install.
 
-### Packages
+## Optimizations (critical render path)
+
+I optimized a couple of things:
+
+-  Compression: I installed the npm package 'compression' and applied it to my progressive web app
+-  Caching headers set: 
+```js
+const setCache = (req, res, next) => {
+  const period = 365 * 24 * 60 * 60 
+  if (req.method == 'GET') {
+    res.set('Cache-control', `public, max-age=${period}`)
+  } else {
+    res.set('Cache-control', `no-store`)
+  }
+  next()
+}
+```
+-  Minify: I used the npm 'minify' package to minify my clientside JavaScript and CSS
+
+With these optimalisations the performance of my progressive web app increased.
+
+
+## Packages
 
 This project uses a number of NPM Packages in able to make te project work. The following packages are used:
 
@@ -67,7 +90,7 @@ This project uses a number of NPM Packages in able to make te project work. The 
 -  body-parser
 -  express-handlebars
 -  node-fetch
--  uglify-js
+-  minify
 -  compression
 
 ## Installation
