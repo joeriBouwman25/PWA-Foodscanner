@@ -17,6 +17,9 @@
 ## Features
 
 Foodscanner, is an Progressive Web App where people can find information about nutritions in products. Foodscanner uses the Open Food Facts API and the Barcode Detect API to create a functional scanner to gain product information.
+
+⚠️unfortunately the Barcode Detect API only works in Google Chrome Browser.⚠️
+
 The applications also allows the user to fill in the barcode in an input field if there is no camera available.
 If the barcode is recognized by the Open Food Facts API the user will get the product name, an image of the product, and nutritient information. the following nutrition information will be returned:
 
@@ -42,7 +45,7 @@ The application also make use of the open food facts API, more information about
 
 As mentioned before this project makes use of an service worker. The service worker is used to save visited pages in the users cache storage and render pages from the cache storage for a faster performance. 
 
-The first time the application is used the service worker will be installed and activated with the following static data already in a cache storage:
+The first time the application is used the service worker will be installed and activated with the following static data already in `core-cache`:
 
 `  const cacheFiles = [
     '/',
@@ -52,9 +55,9 @@ The first time the application is used the service worker will be installed and 
 ]
 ` 
 
-When the service worker is installed it will fetch the requests send on the page and put this in the cache storage, the service worker will do this everytime so the latest version of the page is saved. Then it will check if the worker can render the page from the cached files or need to render it from fetch. When the user has no internet connection it will still be able to render visited pages because these pages are saved in the cache storage.
+When the service worker is installed it will fetch the requests send on the page and put this in the `html-cache`, the service worker will do this everytime so the latest version of the page is saved. Then it will check if the worker can render the page from `html-cache` or need to render it from fetch. When the user has no internet connection he or she will still be able to render visited pages because these pages are saved in `html-cache`.
 
-If the user lands on a page its never been before without internet the service worker will render a static offline page that we saved on the service worker install.
+If the user has no internet and lands on a page he or she has never visited before, the service worker will render a static offline page from `core-cache` that we saved on the service worker install.
 
 ### Packages
 
