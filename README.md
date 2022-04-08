@@ -6,9 +6,10 @@
 
 -  Features
 -  Requirements
+-  Activity Diagram
+-  Cache Strategy
 -  Packages
 -  Installation
--  Cache Strategy
 -  Author
 -  License
 -  Contact
