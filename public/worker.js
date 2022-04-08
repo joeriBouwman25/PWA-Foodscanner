@@ -43,7 +43,7 @@ const render = async (event) => {
         return updatedPages ||cachedFiles
   } 
   catch(err) {
-    const staticCache = await caches.open(CacheStorage)
+    const staticCache = await caches.open(cacheStorage)
     return cachedFiles || staticCache.match('/offline')
   }
 }
