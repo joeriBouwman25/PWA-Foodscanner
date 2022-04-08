@@ -18,7 +18,7 @@
 
 Foodscanner, is an Progressive Web App where people can find information about nutritions in products. Foodscanner uses the Open Food Facts API and the Barcode Detect API to create a functional scanner to gain product information.
 
-⚠️unfortunately the Barcode Detect API only works in Google Chrome Browser.⚠️
+⚠️ Unfortunately the Barcode Detect API only works in Google Chrome Browser ⚠️
 
 The applications also allows the user to fill in the barcode in an input field if there is no camera available.
 If the barcode is recognized by the Open Food Facts API the user will get the product name, an image of the product, and nutritient information. the following nutrition information will be returned:
